@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <math.h>
+
+#define FIX16_SCALE 32768 // Для представления фиксированной точки с 16 битами
+#define MI_P 3.14159265358979323846
+#define samls 256
+int fix16_sin[256];
+int i = 0    ;
+double x = 0;
+
+int generSin(uint8_t AMP) {
+
+
+    for (i = 0; i < 256; i++) {
+        // Преобразуем i в радианы
+        x = 2*(3.14 * i) / 256; // x от -1 до 1
+        // Вычисляем синус и масштабируем в fix16
+        fix16_sin[i] = (int)(A*sin(x) * FIX16_SCALE);
+    }                                               
+
+
+    return 0;
+}
